@@ -120,6 +120,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);overflow:hidde
 .pc-title{font-size:11px;color:var(--muted);margin-bottom:7px;line-height:1.35}
 .pc-focus{font-size:11.5px;color:var(--text2);line-height:1.5}
 .pc-kpi{display:inline-block;font-size:9.5px;font-weight:600;padding:2px 8px;border-radius:100px;margin-top:7px}
+ 
+.ttab.corp-sub{font-size:10px;padding:3px 9px;color:rgba(255,255,255,.3)}
+.ttab.corp-sub.active{background:rgba(147,51,234,.15);border-color:rgba(147,51,234,.25);color:#c084fc}
+.corp-sub-nav.show{display:flex !important}
 </style>
 </head>
 <body>
@@ -134,7 +138,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);overflow:hidde
   <div class="ttab b2b" onclick="jumpTo('b2b')">B2B Sales &amp; Commercial</div>
   <div class="ttab b2c" onclick="jumpTo('b2c')">B2C Employees</div>
   <div class="ttab tech" onclick="jumpTo('tech')">Technology &amp; Networks</div>
-  <div class="ttab corp" onclick="jumpTo('corp')">Corporate Functions</div>
+  <div class="ttab corp" onclick="jumpTo('corp-hr')">Corporate Functions</div>
   <div class="ttab top" onclick="jumpTo('top-who')">Top Management</div>
   <div class="ttab senior" onclick="jumpTo('senior-who')">Senior Management</div>
   <div class="ttab middle" onclick="jumpTo('middle-who')">Middle Management</div>
@@ -299,58 +303,241 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);overflow:hidde
 </div>
 </div>
  
-<!-- ══════════════════ CORPORATE FUNCTIONS ══════════════════ -->
-<div class="slide has-nav" data-id="corp">
+ 
+<!-- ══════════════════ CORPORATE FUNCTIONS: HR ══════════════════ -->
+<div class="slide has-nav" data-id="corp-hr">
 <div class="slide__inner">
   <div class="slide-hdr">
-    <div><div class="eyebrow" style="color:#9333ea">Corporate Functions</div><div class="slide-title">HR, Finance, Legal, Supply Chain, Administration &amp; Strategy</div></div>
-    <div class="hdr-stats"><div class="hdr-stat"><div class="n" style="color:#9333ea">5</div><div class="l">Functions</div></div><div class="hdr-stat"><div class="n" style="color:#16a34a">5</div><div class="l">Agents</div></div></div>
+    <div><div class="eyebrow" style="color:#9333ea">Corporate Functions &middot; HR</div><div class="slide-title">Talent analytics, learning personalisation &amp; workforce planning</div></div>
+    <div class="hdr-stats"><div class="hdr-stat"><div class="n" style="color:#9333ea">3</div><div class="l">Use Cases</div></div><div class="hdr-stat"><div class="n" style="color:#16a34a">3</div><div class="l">Agents</div></div></div>
   </div>
-  <table class="aud-table"><thead><tr><th>Function</th><th>Use case + agent built</th><th>Outcomes</th><th>KPI movement</th><th>Key learning</th></tr></thead><tbody>
+  <table class="aud-table"><thead><tr><th>Focus area</th><th>Use case + agent built</th><th>Outcomes</th><th>KPI movement</th><th>Key learning</th></tr></thead><tbody>
     <tr>
-      <td class="aud-cell" style="--ac:#9333ea"><div class="aud-role" style="color:#9333ea">HR</div><div class="aud-name">HR Manager / Talent Acquisition / L&amp;D</div></td>
-      <td><div class="uc-t">JD generation &amp; workforce analytics</div><div class="uc-d">AI generates role-specific job descriptions, structured screening criteria, and interview question sets in minutes. Synthesises engagement survey data into themes &mdash; flagging retention risks and L&D priority areas before the data sits unread.</div><span class="agent-pill">HR Talent Intelligence Agent</span></td>
-      <td><div class="oi">JD and screening criteria in minutes, not hours</div><div class="oi">Engagement survey insights surfaced within days of data collection</div><div class="oi">Consistent, bias-aware hiring process across all hiring managers</div></td>
-      <td><div class="kb"><div class="kl">Time to hire (prep phase)</div><div class="kv"><span class="kb-b">Weeks of manual prep</span><span class="kb-a">&rarr;</span><span class="kb-af">30% faster cycle</span></div></div><div class="kb"><div class="kl">Survey analysis turnaround</div><div class="kv"><span class="kb-b">Weeks</span><span class="kb-a">&rarr;</span><span class="kb-af">Days with AI</span></div></div></td>
-      <td><div class="li">AI use cases in talent acquisition, onboarding, and L&D personalisation</div><div class="li">Identifying and mitigating algorithmic bias in AI-assisted hiring</div><div class="li">PDPL and employee data protection obligations for HR teams</div></td>
+      <td class="aud-cell" style="--ac:#9333ea"><div class="aud-role" style="color:#9333ea">Talent Analytics</div><div class="aud-name">Talent Acquisition Manager / HR Business Partner</div></td>
+      <td><div class="uc-t">AI-powered JD creation &amp; candidate screening</div><div class="uc-d">AI generates Ooredoo-specific job descriptions, structured screening criteria, and behavioural interview question sets from a brief. Analyses candidate profiles against role requirements and flags fit-gaps — cutting sourcing-to-shortlist time from weeks to days.</div><span class="agent-pill">HR Talent Intelligence Agent</span></td>
+      <td><div class="oi">JD produced in 15 min instead of 2–3 days of drafts and approvals</div><div class="oi">Consistent, bias-aware shortlisting criteria applied across all hiring managers</div><div class="oi">Interview question sets tailored to each role in minutes, not recycled generics</div></td>
+      <td><div class="kb"><div class="kl">Time-to-shortlist</div><div class="kv"><span class="kb-b">2–3 weeks</span><span class="kb-a">&rarr;</span><span class="kb-af">Under 1 week</span><span class="kbadge">50%+ faster</span></div></div><div class="kb"><div class="kl">Hiring manager satisfaction</div><div class="kv"><span class="kb-b">Variable quality</span><span class="kb-a">&rarr;</span><span class="kb-af">Consistent, structured</span></div></div></td>
+      <td><div class="li">AI for talent acquisition: JD generation, structured screening, and fit scoring</div><div class="li">Identifying and mitigating algorithmic bias in AI-assisted candidate assessment</div><div class="li">PDPL obligations — employee and candidate personal data protection requirements</div></td>
     </tr>
     <tr>
-      <td class="aud-cell" style="--ac:#2563eb"><div class="aud-role" style="color:#2563eb">Finance</div><div class="aud-name">Finance Manager / Revenue Assurance / FP&amp;A</div></td>
-      <td><div class="uc-t">Variance analysis &amp; financial narrative</div><div class="uc-d">AI analyses financial data to flag anomalies, generate variance commentary, and produce a board-ready financial narrative &mdash; variance explanations, trend commentary, and forward-looking statements &mdash; directly from raw data files.</div><span class="agent-pill">Finance Intelligence Agent</span></td>
-      <td><div class="oi">Monthly variance commentary in minutes, not half a day</div><div class="oi">Revenue leakage signals surfaced automatically &mdash; not discovered in audits</div><div class="oi">Board-ready financial narrative produced from raw data</div></td>
-      <td><div class="kb"><div class="kl">Monthly close reporting time</div><div class="kv"><span class="kb-b">2&ndash;3 days</span><span class="kb-a">&rarr;</span><span class="kb-af">Hours</span><span class="kbadge">60% faster</span></div></div><div class="kb"><div class="kl">Revenue leakage detection</div><div class="kv"><span class="kb-b">Periodic audits</span><span class="kb-a">&rarr;</span><span class="kb-af">Continuous monitoring</span></div></div></td>
-      <td><div class="li">AI for forecasting, anomaly detection, and variance analysis in finance</div><div class="li">Revenue assurance workflows &mdash; using AI to identify leakage signals</div><div class="li">Accuracy verification and audit trail requirements for AI in finance</div></td>
+      <td class="aud-cell" style="--ac:#7c3aed"><div class="aud-role" style="color:#7c3aed">Learning Personalisation</div><div class="aud-name">L&D Specialist / Capability Development Manager</div></td>
+      <td><div class="uc-t">Personalised learning path builder</div><div class="uc-d">AI maps individual skill gaps against Ooredoo's capability framework and generates a personalised 90-day learning path — specific courses, content types, and sequencing per employee. Engagement survey themes converted into targeted L&D programme recommendations for leadership.</div><span class="agent-pill">Learning Path Personalisation Agent</span></td>
+      <td><div class="oi">Personalised learning paths generated for cohorts of 50+ employees in minutes</div><div class="oi">Engagement survey insights converted to L&D priorities within days of data collection</div><div class="oi">L&D team shifts from generic course catalogues to role-specific learning journeys</div></td>
+      <td><div class="kb"><div class="kl">Learning programme relevance</div><div class="kv"><span class="kb-b">Generic catalogue</span><span class="kb-a">&rarr;</span><span class="kb-af">Role-specific paths</span></div></div><div class="kb"><div class="kl">Survey-to-intervention time</div><div class="kv"><span class="kb-b">Weeks of analysis</span><span class="kb-a">&rarr;</span><span class="kb-af">Days with AI</span></div></div></td>
+      <td><div class="li">AI for skill gap analysis and personalised learning path design at scale</div><div class="li">Using engagement survey data to generate targeted L&D interventions automatically</div><div class="li">Responsible AI in employee data — what can be analysed and what requires consent</div></td>
     </tr>
     <tr>
-      <td class="aud-cell" style="--ac:#ea580c"><div class="aud-role" style="color:#ea580c">Legal &amp; Regulatory</div><div class="aud-name">Legal Counsel / Regulatory Affairs Manager</div></td>
-      <td><div class="uc-t">Contract review &amp; regulatory monitoring</div><div class="uc-d">AI scans contracts to extract key clauses, flag non-standard terms, and generate a structured clause summary. Agent monitors regulatory updates from CRA and PDPL amendments, producing a structured weekly brief with flagged items requiring legal attention.</div><span class="agent-pill">Regulatory Intelligence Agent</span></td>
-      <td><div class="oi">Contract review time reduced &mdash; legal team focuses on judgment, not reading</div><div class="oi">Regulatory updates surfaced and summarised weekly without manual scanning</div><div class="oi">Legal positioned as an AI governance enabler, not a bottleneck</div></td>
-      <td><div class="kb"><div class="kl">Contract review time</div><div class="kv"><span class="kb-b">Hours per contract</span><span class="kb-a">&rarr;</span><span class="kb-af">30 min with AI</span><span class="kbadge">70% faster</span></div></div><div class="kb"><div class="kl">Regulatory scan coverage</div><div class="kv"><span class="kb-b">Ad hoc</span><span class="kb-a">&rarr;</span><span class="kb-af">Weekly structured brief</span></div></div></td>
-      <td><div class="li">AI governance, compliance, and regulatory risk &mdash; Qatar and GCC context</div><div class="li">Using AI to assist document review without replacing legal judgment</div><div class="li">PDPL obligations and automated decision-making rules</div></td>
-    </tr>
-    <tr>
-      <td class="aud-cell" style="--ac:#059669"><div class="aud-role" style="color:#059669">Supply Chain</div><div class="aud-name">Procurement Manager / Supply Chain Analyst</div></td>
-      <td><div class="uc-t">Demand forecasting &amp; category intelligence</div><div class="uc-d">AI generates demand forecasts for key procurement categories and flags supplier risk signals &mdash; delivery SLA breaches, financial stress indicators &mdash; in a structured weekly supplier health summary. Category intelligence brief generated on demand in 20 minutes.</div><span class="agent-pill">Supply Chain Intelligence Agent</span></td>
-      <td><div class="oi">Demand forecasts produced faster and with greater consistency</div><div class="oi">Supplier risk signals surfaced before they become delivery failures</div><div class="oi">Category intelligence available on demand for any sourcing decision</div></td>
-      <td><div class="kb"><div class="kl">Supplier risk identification</div><div class="kv"><span class="kb-b">Reactive &mdash; post-failure</span><span class="kb-a">&rarr;</span><span class="kb-af">Proactive monitoring</span></div></div><div class="kb"><div class="kl">Category research time</div><div class="kv"><span class="kb-b">Days of manual research</span><span class="kb-a">&rarr;</span><span class="kb-af">20 min brief</span><span class="kbadge">85% faster</span></div></div></td>
-      <td><div class="li">AI for demand forecasting and logistics optimisation in telecoms</div><div class="li">Supplier risk monitoring &mdash; signals, scoring, and intervention</div><div class="li">Category management with AI &mdash; sourcing intelligence on demand</div></td>
-    </tr>
-    <tr>
-      <td class="aud-cell" style="--ac:#d97706"><div class="aud-role" style="color:#d97706">Admin &amp; Strategy</div><div class="aud-name">Strategy Manager / Admin Coordinator</div></td>
-      <td><div class="uc-t">Competitive intelligence &amp; workflow automation</div><div class="uc-d">AI generates a structured competitive landscape brief for any market or competitor in 15 minutes. Admin teams use AI to generate SOPs from process notes, convert meeting notes into structured action plans, and automate recurring document workflows.</div><span class="agent-pill">Strategy Intelligence Agent</span></td>
-      <td><div class="oi">Competitive intelligence brief in 15 min instead of days of research</div><div class="oi">SOPs and action plans generated from meeting notes automatically</div><div class="oi">Admin capacity freed from repetitive document workflows</div></td>
-      <td><div class="kb"><div class="kl">Strategy research prep time</div><div class="kv"><span class="kb-b">Days per brief</span><span class="kb-a">&rarr;</span><span class="kb-af">15 min</span><span class="kbadge">90% faster</span></div></div><div class="kb"><div class="kl">Document workflow time</div><div class="kv"><span class="kb-b">Hours manual</span><span class="kb-a">&rarr;</span><span class="kb-af">Minutes automated</span></div></div></td>
-      <td><div class="li">AI-driven market intelligence and strategic foresight for GCC context</div><div class="li">Workflow automation &mdash; identifying processes suitable for AI augmentation</div><div class="li">Governance and risk implications of AI in strategic decision-making</div></td>
+      <td class="aud-cell" style="--ac:#6d28d9"><div class="aud-role" style="color:#6d28d9">Workforce Planning</div><div class="aud-name">HR Strategy Manager / Workforce Planner</div></td>
+      <td><div class="uc-t">Retention risk &amp; workforce intelligence</div><div class="uc-d">AI analyses engagement, performance, tenure, and promotion data to surface retention risk signals — flagging employees likely to exit within 90 days and identifying the specific drivers. Generates a structured workforce planning brief for the quarterly HR leadership review.</div><span class="agent-pill">Workforce Intelligence Agent</span></td>
+      <td><div class="oi">At-risk employees identified 60–90 days before resignation, not after</div><div class="oi">Quarterly workforce brief produced automatically from existing HR data</div><div class="oi">HR moves from reactive backfill to proactive retention strategy</div></td>
+      <td><div class="kb"><div class="kl">Voluntary attrition rate</div><div class="kv"><span class="kb-b">Reactive interventions</span><span class="kb-a">&rarr;</span><span class="kb-af">Early signals, 90-day lead</span></div></div><div class="kb"><div class="kl">Workforce planning cycle</div><div class="kv"><span class="kb-b">Manual, quarterly</span><span class="kb-a">&rarr;</span><span class="kb-af">Continuous AI monitoring</span></div></div></td>
+      <td><div class="li">AI signals for workforce retention — how to read and act on flight risk scores</div><div class="li">Workforce analytics at Ooredoo: what data is available and how to use it responsibly</div><div class="li">PDPL compliance in HR analytics — what employee data can be processed for AI modelling</div></td>
     </tr>
   </tbody></table>
   <div class="glossary-wrap"><div class="glossary-label">Key terms</div><div class="glossary-grid">
-    <div class="gt"><div class="gt-term">FP&amp;A</div><div class="gt-def">Financial Planning &amp; Analysis &mdash; the team responsible for budgeting, forecasting, and financial reporting. AI can draft variance commentary from raw data.</div></div>
-    <div class="gt"><div class="gt-term">Revenue Assurance</div><div class="gt-def">Making sure Ooredoo captures all revenue it should &mdash; detecting billing errors, leakage, and fraud. AI monitors continuously vs periodic audits.</div></div>
-    <div class="gt"><div class="gt-term">SOP</div><div class="gt-def">Standard Operating Procedure &mdash; a documented step-by-step process for a recurring task. AI generates these from process notes in minutes.</div></div>
-    <div class="gt"><div class="gt-term">AI Governance</div><div class="gt-def">Policies and oversight ensuring AI is used responsibly &mdash; with appropriate human review and compliance with PDPL and CRA regulations.</div></div>
+    <div class="gt"><div class="gt-term">Talent analytics</div><div class="gt-def">Using data from hiring, performance, and engagement systems to identify patterns — who joins, who stays, who exits, and why — to inform HR decisions rather than relying on intuition.</div></div>
+    <div class="gt"><div class="gt-term">Skill gap analysis</div><div class="gt-def">Comparing an employee's current capabilities against the competencies required for their role or future roles — the basis for personalised learning path generation.</div></div>
+    <div class="gt"><div class="gt-term">PDPL (employee data)</div><div class="gt-def">Qatar's Personal Data Protection Law applies to employee data processing too — AI models trained on HR data must comply with consent and purpose limitation requirements.</div></div>
+    <div class="gt"><div class="gt-term">Flight risk score</div><div class="gt-def">An AI-generated probability score indicating how likely an employee is to leave within a defined period — calculated from engagement, tenure, performance, and behavioural signals.</div></div>
   </div></div>
 </div>
 </div>
+ 
+<!-- ══════════════════ CORPORATE FUNCTIONS: FINANCE ══════════════════ -->
+<div class="slide has-nav" data-id="corp-finance">
+<div class="slide__inner">
+  <div class="slide-hdr">
+    <div><div class="eyebrow" style="color:#2563eb">Corporate Functions &middot; Finance</div><div class="slide-title">Forecasting, anomaly detection &amp; decision support</div></div>
+    <div class="hdr-stats"><div class="hdr-stat"><div class="n" style="color:#2563eb">3</div><div class="l">Use Cases</div></div><div class="hdr-stat"><div class="n" style="color:#16a34a">3</div><div class="l">Agents</div></div></div>
+  </div>
+  <table class="aud-table"><thead><tr><th>Focus area</th><th>Use case + agent built</th><th>Outcomes</th><th>KPI movement</th><th>Key learning</th></tr></thead><tbody>
+    <tr>
+      <td class="aud-cell" style="--ac:#2563eb"><div class="aud-role" style="color:#2563eb">Forecasting</div><div class="aud-name">FP&amp;A Analyst / Financial Planning Manager</div></td>
+      <td><div class="uc-t">AI-assisted financial narrative &amp; variance commentary</div><div class="uc-d">AI analyses budget vs actual data and generates board-ready variance commentary by line item — trend analysis, key drivers, and forward-looking statements. Monthly close reporting brief produced from raw data in minutes, ready for CFO review.</div><span class="agent-pill">Finance Intelligence Agent</span></td>
+      <td><div class="oi">Monthly close commentary drafted in under 30 min instead of half a day</div><div class="oi">Board-ready financial narrative with consistent tone and format across all functions</div><div class="oi">FP&amp;A team capacity freed for strategic analysis, not report writing</div></td>
+      <td><div class="kb"><div class="kl">Monthly close reporting time</div><div class="kv"><span class="kb-b">2–3 days</span><span class="kb-a">&rarr;</span><span class="kb-af">Hours</span><span class="kbadge">60% faster</span></div></div><div class="kb"><div class="kl">CFO review cycle</div><div class="kv"><span class="kb-b">Multiple revision rounds</span><span class="kb-a">&rarr;</span><span class="kb-af">Consistent first draft</span></div></div></td>
+      <td><div class="li">AI for financial narrative generation — variance commentary, trend analysis, forecasting briefs</div><div class="li">Accuracy verification for AI financial outputs — where to always apply human review before sign-off</div><div class="li">Audit trail requirements when AI is used in financial reporting at Ooredoo</div></td>
+    </tr>
+    <tr>
+      <td class="aud-cell" style="--ac:#0891b2"><div class="aud-role" style="color:#0891b2">Anomaly Detection</div><div class="aud-name">Revenue Assurance Manager / Internal Audit Analyst</div></td>
+      <td><div class="uc-t">Revenue leakage detection &amp; billing anomaly audit</div><div class="uc-d">AI monitors billing and usage data across prepaid, postpaid, data, and VAS lines — flagging anomalies and estimating QAR leakage per item. Weekly revenue assurance brief generated automatically with specific investigation priorities ranked by value at risk.</div><span class="agent-pill">Revenue Assurance Intelligence Agent</span></td>
+      <td><div class="oi">Revenue leakage signals surfaced continuously, not discovered in quarterly audits</div><div class="oi">Investigation priorities ranked by estimated QAR value at risk — team focuses where it counts</div><div class="oi">Revenue assurance coverage expands from sampled to near-continuous monitoring</div></td>
+      <td><div class="kb"><div class="kl">Revenue leakage detection lag</div><div class="kv"><span class="kb-b">Quarterly audits</span><span class="kb-a">&rarr;</span><span class="kb-af">Weekly AI monitoring</span></div></div><div class="kb"><div class="kl">Investigation hit rate</div><div class="kv"><span class="kb-b">Low — broad sampling</span><span class="kb-a">&rarr;</span><span class="kb-af">High — AI-prioritised</span></div></div></td>
+      <td><div class="li">How anomaly detection works in financial data — what signals AI can and cannot reliably identify</div><div class="li">Revenue assurance in a telco context: prepaid, data, VAS, interconnect leakage patterns</div><div class="li">False positive management — how to tune AI thresholds to reduce noise without missing real signals</div></td>
+    </tr>
+    <tr>
+      <td class="aud-cell" style="--ac:#0369a1"><div class="aud-role" style="color:#0369a1">Decision Support</div><div class="aud-name">Finance Manager / Senior Financial Analyst</div></td>
+      <td><div class="uc-t">AI-generated financial decision brief</div><div class="uc-d">For any investment decision, cost reduction initiative, or commercial proposal, AI generates a structured financial decision brief — scenario analysis (base / optimistic / downside), key assumptions, risk factors, and a one-page CFO-ready summary — in under 20 minutes.</div><span class="agent-pill">Financial Decision Support Agent</span></td>
+      <td><div class="oi">Financial decision briefs produced in 20 min instead of 2–3 days of modelling</div><div class="oi">Scenario analysis with 3 cases — base, optimistic, downside — consistently applied</div><div class="oi">Finance positioned as a strategic partner, not just a reporting function</div></td>
+      <td><div class="kb"><div class="kl">Decision brief turnaround</div><div class="kv"><span class="kb-b">2–3 days</span><span class="kb-a">&rarr;</span><span class="kb-af">20 min</span><span class="kbadge">85% faster</span></div></div><div class="kb"><div class="kl">Scenario coverage</div><div class="kv"><span class="kb-b">Single case — base only</span><span class="kb-a">&rarr;</span><span class="kb-af">3 scenarios, consistently</span></div></div></td>
+      <td><div class="li">AI for scenario analysis and financial modelling support — what it can generate vs what needs human judgement</div><div class="li">Structuring financial prompts: what inputs AI needs to produce reliable scenario models</div><div class="li">AI governance in finance: who signs off on AI-assisted financial recommendations at Ooredoo</div></td>
+    </tr>
+  </tbody></table>
+  <div class="glossary-wrap"><div class="glossary-label">Key terms</div><div class="glossary-grid">
+    <div class="gt"><div class="gt-term">FP&amp;A</div><div class="gt-def">Financial Planning &amp; Analysis — the team responsible for budgeting, forecasting, and financial reporting. AI can draft variance commentary and scenario models from raw data inputs.</div></div>
+    <div class="gt"><div class="gt-term">Revenue assurance</div><div class="gt-def">The process of ensuring Ooredoo captures all revenue it should — detecting billing errors, data leakage, and fraud across all revenue lines before they compound.</div></div>
+    <div class="gt"><div class="gt-term">Anomaly detection</div><div class="gt-def">AI identifying data points that deviate from expected patterns — e.g. an unusual spike in a billing line, an unexpected drop in ARPU, or an interconnect charge with no matching usage.</div></div>
+    <div class="gt"><div class="gt-term">VAS</div><div class="gt-def">Value-Added Services — non-core telecom services like content subscriptions, SMS premium services, and digital add-ons. A common area for billing anomalies and revenue leakage at telcos.</div></div>
+  </div></div>
+</div>
+</div>
+ 
+<!-- ══════════════════ CORPORATE FUNCTIONS: LEGAL ══════════════════ -->
+<div class="slide has-nav" data-id="corp-legal">
+<div class="slide__inner">
+  <div class="slide-hdr">
+    <div><div class="eyebrow" style="color:#ea580c">Corporate Functions &middot; Legal &amp; Regulatory</div><div class="slide-title">AI governance, compliance &amp; regulatory risk</div></div>
+    <div class="hdr-stats"><div class="hdr-stat"><div class="n" style="color:#ea580c">3</div><div class="l">Use Cases</div></div><div class="hdr-stat"><div class="n" style="color:#16a34a">3</div><div class="l">Agents</div></div></div>
+  </div>
+  <table class="aud-table"><thead><tr><th>Focus area</th><th>Use case + agent built</th><th>Outcomes</th><th>KPI movement</th><th>Key learning</th></tr></thead><tbody>
+    <tr>
+      <td class="aud-cell" style="--ac:#ea580c"><div class="aud-role" style="color:#ea580c">AI Governance</div><div class="aud-name">Legal Counsel / Corporate Governance Manager</div></td>
+      <td><div class="uc-t">AI governance framework builder</div><div class="uc-d">Legal team uses AI to generate Ooredoo's internal AI governance framework — defining AI use policy, human oversight requirements, prohibited use cases, and escalation structures. Builds a governance checklist that any business unit must complete before deploying an AI tool across Ooredoo.</div><span class="agent-pill">AI Governance Framework Agent</span></td>
+      <td><div class="oi">Ooredoo-specific AI governance framework drafted and ready for internal consultation</div><div class="oi">Business units equipped with a clear AI deployment checklist — no ambiguity on what's allowed</div><div class="oi">Legal positioned as an AI enabler, not just a sign-off gate</div></td>
+      <td><div class="kb"><div class="kl">AI governance clarity</div><div class="kv"><span class="kb-b">No internal framework</span><span class="kb-a">&rarr;</span><span class="kb-af">Documented, deployed</span></div></div><div class="kb"><div class="kl">AI deployment risk</div><div class="kv"><span class="kb-b">Unstructured, ad hoc</span><span class="kb-a">&rarr;</span><span class="kb-af">Checklist-governed</span></div></div></td>
+      <td><div class="li">What AI governance means in practice — not just ethics principles but operational checklists</div><div class="li">PDPL implications for automated decision-making: when human review is legally required</div><div class="li">CRA guidelines for AI in telecommunications — what Ooredoo must comply with in Qatar</div></td>
+    </tr>
+    <tr>
+      <td class="aud-cell" style="--ac:#c2410c"><div class="aud-role" style="color:#c2410c">Compliance</div><div class="aud-name">Regulatory Affairs Manager / Compliance Analyst</div></td>
+      <td><div class="uc-t">Contract clause extraction &amp; compliance review</div><div class="uc-d">AI scans supplier contracts, vendor agreements, and partnership documents to extract key clauses, flag non-standard terms, and identify PDPL or CRA compliance gaps. Structured clause summary with risk flags generated in minutes — legal team focuses judgment on flagged items only.</div><span class="agent-pill">Regulatory Intelligence Agent</span></td>
+      <td><div class="oi">Contract review time reduced from hours to 30 minutes per agreement</div><div class="oi">Non-standard terms and compliance gaps flagged before sign-off, not discovered post-execution</div><div class="oi">Legal team capacity freed from first-pass document reading to substantive analysis</div></td>
+      <td><div class="kb"><div class="kl">Contract review time</div><div class="kv"><span class="kb-b">Hours per contract</span><span class="kb-a">&rarr;</span><span class="kb-af">30 min with AI</span><span class="kbadge">70% faster</span></div></div><div class="kb"><div class="kl">Compliance gap detection</div><div class="kv"><span class="kb-b">Post-signature discovery</span><span class="kb-a">&rarr;</span><span class="kb-af">Pre-signature flagging</span></div></div></td>
+      <td><div class="li">AI for contract analysis — what it can reliably extract vs where legal judgment is irreplaceable</div><div class="li">PDPL clause requirements in vendor and supplier contracts — what Ooredoo must include</div><div class="li">Responsible use of AI in legal work: confidentiality, privilege, and data handling obligations</div></td>
+    </tr>
+    <tr>
+      <td class="aud-cell" style="--ac:#9a3412"><div class="aud-role" style="color:#9a3412">Regulatory Risk</div><div class="aud-name">Regulatory Affairs Specialist / Legal Analyst</div></td>
+      <td><div class="uc-t">Regulatory monitoring &amp; weekly compliance brief</div><div class="uc-d">Agent monitors regulatory updates from the CRA, PDPL authority, and relevant GCC regulatory bodies — producing a structured weekly brief with new developments, flagged items requiring Ooredoo action, and a risk-rated summary for the Head of Legal review each Monday morning.</div><span class="agent-pill">CRA &amp; PDPL Monitoring Agent</span></td>
+      <td><div class="oi">Regulatory updates surfaced and summarised weekly — no manual scanning of multiple sources</div><div class="oi">Items requiring Ooredoo response flagged with risk level and recommended action</div><div class="oi">Legal team never caught off-guard by a regulatory change they missed</div></td>
+      <td><div class="kb"><div class="kl">Regulatory scan coverage</div><div class="kv"><span class="kb-b">Ad hoc — missed updates</span><span class="kb-a">&rarr;</span><span class="kb-af">Weekly structured brief</span></div></div><div class="kb"><div class="kl">Response lead time</div><div class="kv"><span class="kb-b">Reactive</span><span class="kb-a">&rarr;</span><span class="kb-af">30+ day advance notice</span></div></div></td>
+      <td><div class="li">How AI monitors regulatory environments — what it can reliably track vs what requires specialist judgment</div><div class="li">GCC regulatory landscape for AI: CRA, PDPL, and emerging AI-specific regulations in Qatar</div><div class="li">Structuring the legal AI workflow: from monitoring to flagging to human decision</div></td>
+    </tr>
+  </tbody></table>
+  <div class="glossary-wrap"><div class="glossary-label">Key terms</div><div class="glossary-grid">
+    <div class="gt"><div class="gt-term">CRA</div><div class="gt-def">Communications Regulatory Authority — Qatar's telecoms regulator. Sets rules on data handling, service quality, and increasingly, AI use in telecoms. Ooredoo must maintain full compliance.</div></div>
+    <div class="gt"><div class="gt-term">PDPL</div><div class="gt-def">Qatar's Personal Data Protection Law — governs how personal data is collected, processed, and used. Applies to every AI system at Ooredoo that touches customer or employee data.</div></div>
+    <div class="gt"><div class="gt-term">Automated decision-making</div><div class="gt-def">When an AI system makes a decision affecting a person without human review — e.g. auto-approving a credit limit or auto-rejecting a claim. PDPL requires human oversight in many such cases.</div></div>
+    <div class="gt"><div class="gt-term">AI governance</div><div class="gt-def">The internal policies, checklists, and oversight structures that ensure AI is deployed responsibly at Ooredoo — who approves, who audits, what's prohibited, and how to escalate concerns.</div></div>
+  </div></div>
+</div>
+</div>
+ 
+<!-- ══════════════════ CORPORATE FUNCTIONS: SUPPLY CHAIN ══════════════════ -->
+<div class="slide has-nav" data-id="corp-supply">
+<div class="slide__inner">
+  <div class="slide-hdr">
+    <div><div class="eyebrow" style="color:#059669">Corporate Functions &middot; Supply Chain &amp; Procurement</div><div class="slide-title">Demand forecasting, logistics optimisation &amp; supplier intelligence</div></div>
+    <div class="hdr-stats"><div class="hdr-stat"><div class="n" style="color:#059669">3</div><div class="l">Use Cases</div></div><div class="hdr-stat"><div class="n" style="color:#16a34a">3</div><div class="l">Agents</div></div></div>
+  </div>
+  <table class="aud-table"><thead><tr><th>Focus area</th><th>Use case + agent built</th><th>Outcomes</th><th>KPI movement</th><th>Key learning</th></tr></thead><tbody>
+    <tr>
+      <td class="aud-cell" style="--ac:#059669"><div class="aud-role" style="color:#059669">Demand Forecasting</div><div class="aud-name">Procurement Manager / Supply Chain Analyst</div></td>
+      <td><div class="uc-t">AI-powered demand &amp; category intelligence</div><div class="uc-d">AI generates demand forecasts for key procurement categories — network equipment, IT infrastructure, devices, and facilities — based on historical consumption, project pipeline, and market signals. Category intelligence brief for any sourcing decision produced on demand in 20 minutes.</div><span class="agent-pill">Supply Chain Intelligence Agent</span></td>
+      <td><div class="oi">Demand forecasts produced faster and with consistent methodology across all categories</div><div class="oi">Category intelligence available on demand — no days of manual research before a sourcing decision</div><div class="oi">Procurement team moves from reactive purchasing to planned, intelligence-led procurement</div></td>
+      <td><div class="kb"><div class="kl">Category research time</div><div class="kv"><span class="kb-b">Days of manual research</span><span class="kb-a">&rarr;</span><span class="kb-af">20 min on demand</span><span class="kbadge">85% faster</span></div></div><div class="kb"><div class="kl">Forecast accuracy</div><div class="kv"><span class="kb-b">Manual estimates</span><span class="kb-a">&rarr;</span><span class="kb-af">AI-assisted consistency</span></div></div></td>
+      <td><div class="li">AI for procurement demand forecasting — data inputs, model limitations, and confidence intervals</div><div class="li">Category management with AI — how to build a sourcing intelligence workflow from scratch</div><div class="li">Integrating AI forecasting with Ooredoo's existing ERP and procurement systems</div></td>
+    </tr>
+    <tr>
+      <td class="aud-cell" style="--ac:#047857"><div class="aud-role" style="color:#047857">Logistics Optimisation</div><div class="aud-name">Logistics Manager / Warehouse &amp; Distribution Lead</div></td>
+      <td><div class="uc-t">Network equipment logistics &amp; delivery tracking</div><div class="uc-d">AI monitors delivery pipelines for critical network equipment — 5G hardware, fiber components, IT infrastructure — flagging delays before they impact project timelines. Generates a weekly logistics brief with at-risk deliveries ranked by project impact, with recommended mitigation actions per item.</div><span class="agent-pill">Logistics Risk Monitor Agent</span></td>
+      <td><div class="oi">Delivery delays flagged 2–3 weeks before they impact network or IT project timelines</div><div class="oi">Weekly logistics risk brief generated automatically — no manual tracking across spreadsheets</div><div class="oi">Network project managers receive early warning instead of last-minute escalations</div></td>
+      <td><div class="kb"><div class="kl">Delivery delay detection lead time</div><div class="kv"><span class="kb-b">Reactive — at project impact</span><span class="kb-a">&rarr;</span><span class="kb-af">2–3 weeks proactive</span></div></div><div class="kb"><div class="kl">Logistics tracking time</div><div class="kv"><span class="kb-b">Manual spreadsheets</span><span class="kb-a">&rarr;</span><span class="kb-af">Automated weekly brief</span></div></div></td>
+      <td><div class="li">AI for logistics monitoring — integrating carrier, customs, and project data into one intelligence flow</div><div class="li">Risk-rating delivery pipelines by project criticality — how to prioritise what the team monitors</div><div class="li">Using AI to communicate logistics risk to project stakeholders clearly and proactively</div></td>
+    </tr>
+    <tr>
+      <td class="aud-cell" style="--ac:#065f46"><div class="aud-role" style="color:#065f46">Supplier Intelligence</div><div class="aud-name">Sourcing Specialist / Vendor Management Lead</div></td>
+      <td><div class="uc-t">Supplier risk monitoring &amp; performance analysis</div><div class="uc-d">AI monitors supplier health signals — SLA breach history, financial stress indicators, geopolitical risk, and public news — producing a structured weekly supplier health summary. Vendor performance scorecard generated from quarterly data in minutes for supplier review meetings.</div><span class="agent-pill">Supplier Risk Intelligence Agent</span></td>
+      <td><div class="oi">Supplier risk signals surfaced before they become delivery failures or SLA breaches</div><div class="oi">Vendor performance scorecards generated automatically ahead of quarterly review meetings</div><div class="oi">Procurement team builds a supplier risk register without weeks of manual data gathering</div></td>
+      <td><div class="kb"><div class="kl">Supplier risk identification</div><div class="kv"><span class="kb-b">Post-failure discovery</span><span class="kb-a">&rarr;</span><span class="kb-af">Continuous monitoring</span></div></div><div class="kb"><div class="kl">Vendor scorecard prep time</div><div class="kv"><span class="kb-b">1–2 days manually</span><span class="kb-a">&rarr;</span><span class="kb-af">30 min with AI</span><span class="kbadge">85% faster</span></div></div></td>
+      <td><div class="li">AI for supplier risk assessment — which signals matter most and how to weight them</div><div class="li">Building a supplier health monitoring workflow at Ooredoo from existing procurement data</div><div class="li">Vendor management with AI: what to automate vs what always requires relationship judgment</div></td>
+    </tr>
+  </tbody></table>
+  <div class="glossary-wrap"><div class="glossary-label">Key terms</div><div class="glossary-grid">
+    <div class="gt"><div class="gt-term">Category management</div><div class="gt-def">Grouping similar procurement items (e.g. network hardware, IT software, facilities) and developing tailored sourcing strategies per group — rather than buying each item independently.</div></div>
+    <div class="gt"><div class="gt-term">SLA breach</div><div class="gt-def">When a supplier fails to meet the agreed service level — e.g. late delivery of network equipment. AI can detect early warning signals from payment patterns, lead time trends, and supplier news.</div></div>
+    <div class="gt"><div class="gt-term">Geopolitical risk (supply chain)</div><div class="gt-def">External risks affecting supplier reliability — trade restrictions, sanctions, conflict, or shipping disruption. AI monitors public signals to flag procurement exposure before it becomes a delivery problem.</div></div>
+    <div class="gt"><div class="gt-term">Supplier health signal</div><div class="gt-def">Any data point suggesting a supplier may struggle to deliver — financial stress, management changes, late invoices, public news — that AI can detect before a formal SLA breach occurs.</div></div>
+  </div></div>
+</div>
+</div>
+ 
+<!-- ══════════════════ CORPORATE FUNCTIONS: ADMINISTRATION ══════════════════ -->
+<div class="slide has-nav" data-id="corp-admin">
+<div class="slide__inner">
+  <div class="slide-hdr">
+    <div><div class="eyebrow" style="color:#d97706">Corporate Functions &middot; Administration</div><div class="slide-title">Workflow automation &amp; productivity tools</div></div>
+    <div class="hdr-stats"><div class="hdr-stat"><div class="n" style="color:#d97706">3</div><div class="l">Use Cases</div></div><div class="hdr-stat"><div class="n" style="color:#16a34a">3</div><div class="l">Agents</div></div></div>
+  </div>
+  <table class="aud-table"><thead><tr><th>Focus area</th><th>Use case + agent built</th><th>Outcomes</th><th>KPI movement</th><th>Key learning</th></tr></thead><tbody>
+    <tr>
+      <td class="aud-cell" style="--ac:#d97706"><div class="aud-role" style="color:#d97706">Workflow Automation</div><div class="aud-name">Administration Manager / Office Coordinator</div></td>
+      <td><div class="uc-t">SOP generation &amp; process documentation</div><div class="uc-d">AI generates structured Standard Operating Procedures from process notes, verbal descriptions, or meeting recordings — formatted with step-by-step actions, decision trees, responsibility matrix, and review dates. Recurring admin document workflows automated with a single agent build.</div><span class="agent-pill">SOP &amp; Process Documentation Agent</span></td>
+      <td><div class="oi">SOPs generated in 20 minutes from process notes instead of days of drafting and approval</div><div class="oi">Admin document workflows automated — one build, continuous reuse by the whole team</div><div class="oi">Process documentation quality consistent across all functions, not dependent on who wrote it</div></td>
+      <td><div class="kb"><div class="kl">SOP creation time</div><div class="kv"><span class="kb-b">Days of drafting</span><span class="kb-a">&rarr;</span><span class="kb-af">20 min with AI</span><span class="kbadge">85% faster</span></div></div><div class="kb"><div class="kl">Document workflow cycle</div><div class="kv"><span class="kb-b">Manual, hours</span><span class="kb-a">&rarr;</span><span class="kb-af">Automated, minutes</span></div></div></td>
+      <td><div class="li">Identifying which admin tasks are suitable for AI automation vs where human judgment is required</div><div class="li">Workflow automation design — trigger, process, output, and human review checkpoint at each stage</div><div class="li">Responsible AI in admin: confidentiality and data handling for internal process documents</div></td>
+    </tr>
+    <tr>
+      <td class="aud-cell" style="--ac:#b45309"><div class="aud-role" style="color:#b45309">Meeting Productivity</div><div class="aud-name">Executive Assistant / Programme Coordinator</div></td>
+      <td><div class="uc-t">Meeting notes to action plan converter</div><div class="uc-d">AI converts unstructured meeting notes into a structured action plan — owners, deadlines, priority levels, and follow-up questions — ready to share before everyone leaves the room. Generates a stakeholder update communication from the same notes simultaneously.</div><span class="agent-pill">Meeting Intelligence Agent</span></td>
+      <td><div class="oi">Action plans distributed within 5 minutes of any meeting ending</div><div class="oi">Accountability clear from day 1 — owners, deadlines, and priorities named, not implied</div><div class="oi">Executive assistant capacity freed from admin to higher-value programme coordination</div></td>
+      <td><div class="kb"><div class="kl">Action plan turnaround time</div><div class="kv"><span class="kb-b">Next day at earliest</span><span class="kb-a">&rarr;</span><span class="kb-af">5 min post-meeting</span><span class="kbadge">Same session</span></div></div><div class="kb"><div class="kl">Follow-through rate</div><div class="kv"><span class="kb-b">Variable — often forgotten</span><span class="kb-a">&rarr;</span><span class="kb-af">Structured accountability</span></div></div></td>
+      <td><div class="li">Prompt engineering for meeting notes — how to structure input to get structured, actionable output</div><div class="li">AI for stakeholder communication drafting — tone, format, and level of detail per audience</div><div class="li">Human-in-the-loop for meeting intelligence — what AI captures vs what requires human interpretation</div></td>
+    </tr>
+    <tr>
+      <td class="aud-cell" style="--ac:#92400e"><div class="aud-role" style="color:#92400e">Document Intelligence</div><div class="aud-name">Admin Specialist / Facilities &amp; Support Services</div></td>
+      <td><div class="uc-t">Document summarisation &amp; email management</div><div class="uc-d">AI processes large document sets — policy documents, reports, approval submissions — and generates structured summaries with key decisions, action requirements, and review deadlines highlighted. Email drafting tool produces professional, on-brand responses to standard admin queries in seconds.</div><span class="agent-pill">Document Intelligence Agent</span></td>
+      <td><div class="oi">Large documents summarised to key actions in minutes instead of hours of reading</div><div class="oi">Email response time reduced through AI-drafted first responses that agents review and send</div><div class="oi">Admin team handles higher volumes without additional headcount</div></td>
+      <td><div class="kb"><div class="kl">Document review time</div><div class="kv"><span class="kb-b">Hours per document set</span><span class="kb-a">&rarr;</span><span class="kb-af">Minutes with AI</span><span class="kbadge">75% faster</span></div></div><div class="kb"><div class="kl">Email response time</div><div class="kv"><span class="kb-b">Hours manual drafting</span><span class="kb-a">&rarr;</span><span class="kb-af">Minutes AI-assisted</span></div></div></td>
+      <td><div class="li">AI for document intelligence — summarisation, extraction, and action identification from long documents</div><div class="li">Email AI assistance — how to use AI drafting without losing professional voice or accuracy</div><div class="li">Data minimisation principle — not feeding confidential internal documents into public AI tools</div></td>
+    </tr>
+  </tbody></table>
+  <div class="glossary-wrap"><div class="glossary-label">Key terms</div><div class="glossary-grid">
+    <div class="gt"><div class="gt-term">SOP</div><div class="gt-def">Standard Operating Procedure — a documented step-by-step process for a recurring task. AI generates these from process notes or verbal descriptions in minutes rather than days.</div></div>
+    <div class="gt"><div class="gt-term">Workflow automation</div><div class="gt-def">Using AI or software to perform a sequence of tasks automatically — triggered by an event, without requiring manual input each time. Most effective for high-frequency, rule-based admin tasks.</div></div>
+    <div class="gt"><div class="gt-term">Data minimisation</div><div class="gt-def">A PDPL principle: only process the personal or confidential data you actually need. Applies to what you put into AI tools — avoid sharing more than necessary to complete the task.</div></div>
+    <div class="gt"><div class="gt-term">Human-in-the-loop</div><div class="gt-def">An AI design principle where a human reviews and approves AI-generated output before it is acted on or distributed. Essential for admin decisions that affect people or involve sensitive data.</div></div>
+  </div></div>
+</div>
+</div>
+ 
+<!-- ══════════════════ CORPORATE FUNCTIONS: STRATEGY ══════════════════ -->
+<div class="slide has-nav" data-id="corp-strategy">
+<div class="slide__inner">
+  <div class="slide-hdr">
+    <div><div class="eyebrow" style="color:#7c3aed">Corporate Functions &middot; Strategy</div><div class="slide-title">AI-driven market intelligence, strategic foresight &amp; performance optimisation</div></div>
+    <div class="hdr-stats"><div class="hdr-stat"><div class="n" style="color:#7c3aed">3</div><div class="l">Use Cases</div></div><div class="hdr-stat"><div class="n" style="color:#16a34a">3</div><div class="l">Agents</div></div></div>
+  </div>
+  <table class="aud-table"><thead><tr><th>Focus area</th><th>Use case + agent built</th><th>Outcomes</th><th>KPI movement</th><th>Key learning</th></tr></thead><tbody>
+    <tr>
+      <td class="aud-cell" style="--ac:#7c3aed"><div class="aud-role" style="color:#7c3aed">Market Intelligence</div><div class="aud-name">Strategy Manager / Competitive Intelligence Lead</div></td>
+      <td><div class="uc-t">Competitive landscape intelligence brief</div><div class="uc-d">AI generates a structured competitive intelligence brief for any market, competitor, or technology development — covering public signals, strategic moves, financial indicators, and Ooredoo's differentiated response. GCC telecom competitive landscape brief produced in 15 minutes for strategy workshops and board prep.</div><span class="agent-pill">Strategy Intelligence Agent</span></td>
+      <td><div class="oi">Competitive intelligence brief in 15 min instead of days of analyst research</div><div class="oi">Strategy team always enters board and leadership meetings with current market intelligence</div><div class="oi">Ooredoo's strategic response to competitor moves framed and ready within hours, not weeks</div></td>
+      <td><div class="kb"><div class="kl">Competitive brief turnaround</div><div class="kv"><span class="kb-b">Days per brief</span><span class="kb-a">&rarr;</span><span class="kb-af">15 min on demand</span><span class="kbadge">90% faster</span></div></div><div class="kb"><div class="kl">Board prep quality</div><div class="kv"><span class="kb-b">Stale intelligence</span><span class="kb-a">&rarr;</span><span class="kb-af">Current, structured brief</span></div></div></td>
+      <td><div class="li">AI for competitive intelligence — what public signals AI can reliably track vs what requires proprietary data</div><div class="li">GCC telecom landscape: STC, e&, Vodafone Qatar — how to frame Ooredoo's competitive position</div><div class="li">Structuring strategic intelligence prompts: inputs, framing, and output format for leadership use</div></td>
+    </tr>
+    <tr>
+      <td class="aud-cell" style="--ac:#6d28d9"><div class="aud-role" style="color:#6d28d9">Strategic Foresight</div><div class="aud-name">Senior Strategy Analyst / Innovation Manager</div></td>
+      <td><div class="uc-t">AI trend scanning &amp; scenario planning</div><div class="uc-d">AI synthesises emerging technology, regulatory, and market trends relevant to Ooredoo's 3-year strategy — identifying signals that could accelerate or disrupt the current plan. Generates 3 scenario narratives (optimistic / base / disruptive) for any strategic assumption in under 30 minutes.</div><span class="agent-pill">Strategic Foresight Agent</span></td>
+      <td><div class="oi">Emerging technology and market trends surfaced systematically, not sporadically</div><div class="oi">3-scenario planning completed in 30 minutes instead of a 2-day strategy workshop</div><div class="oi">Strategy team identifies strategic risks and opportunities 6–12 months earlier</div></td>
+      <td><div class="kb"><div class="kl">Trend scanning coverage</div><div class="kv"><span class="kb-b">Sporadic, manual</span><span class="kb-a">&rarr;</span><span class="kb-af">Systematic, AI-assisted</span></div></div><div class="kb"><div class="kl">Scenario planning time</div><div class="kv"><span class="kb-b">2-day workshop</span><span class="kb-a">&rarr;</span><span class="kb-af">30 min AI-generated</span></div></div></td>
+      <td><div class="li">AI for strategic foresight — how to use trend scanning without confusing noise with signal</div><div class="li">Scenario planning with AI: structuring optimistic, base, and disruptive scenarios for any strategic question</div><div class="li">AI and the long-term: what strategic planning still requires human judgment vs what AI can systematise</div></td>
+    </tr>
+    <tr>
+      <td class="aud-cell" style="--ac:#5b21b6"><div class="aud-role" style="color:#5b21b6">Performance Optimisation</div><div class="aud-name">Strategy Execution Manager / OKR Lead</div></td>
+      <td><div class="uc-t">Strategic performance dashboard &amp; OKR analysis</div><div class="uc-d">AI generates a structured strategic performance brief from KPI data — flagging initiatives that are off-track, identifying root cause patterns, and recommending corrective actions ranked by strategic impact. OKR progress narrative produced automatically for quarterly business reviews.</div><span class="agent-pill">Performance Intelligence Agent</span></td>
+      <td><div class="oi">Quarterly business review brief generated automatically from KPI data in 20 minutes</div><div class="oi">Off-track strategic initiatives flagged with root cause hypothesis and recommended actions</div><div class="oi">Leadership always reviews strategy performance with structured intelligence, not data dumps</div></td>
+      <td><div class="kb"><div class="kl">QBR brief preparation time</div><div class="kv"><span class="kb-b">Days of data gathering</span><span class="kb-a">&rarr;</span><span class="kb-af">20 min AI-generated</span><span class="kbadge">85% faster</span></div></div><div class="kb"><div class="kl">Strategic initiative visibility</div><div class="kv"><span class="kb-b">Ad hoc, reactive</span><span class="kb-a">&rarr;</span><span class="kb-af">Continuous, proactive</span></div></div></td>
+      <td><div class="li">AI for performance analytics — how to translate KPI data into strategic narrative and action recommendations</div><div class="li">OKR monitoring with AI: setting up automated progress tracking and exception alerting</div><div class="li">Governance of AI in strategy: who approves AI-generated strategic recommendations before they reach leadership</div></td>
+    </tr>
+  </tbody></table>
+  <div class="glossary-wrap"><div class="glossary-label">Key terms</div><div class="glossary-grid">
+    <div class="gt"><div class="gt-term">Strategic foresight</div><div class="gt-def">The practice of scanning for emerging signals — technology shifts, regulatory changes, competitor moves — before they become obvious. AI makes this continuous rather than periodic.</div></div>
+    <div class="gt"><div class="gt-term">Scenario planning</div><div class="gt-def">Developing 3 distinct narratives (optimistic, base, disruptive) for a strategic assumption — so decisions are stress-tested against multiple futures, not just the most likely one.</div></div>
+    <div class="gt"><div class="gt-term">OKR</div><div class="gt-def">Objectives and Key Results — a strategic goal-setting framework. AI can monitor OKR progress continuously and flag at-risk objectives before the quarterly review cycle, not during it.</div></div>
+    <div class="gt"><div class="gt-term">QBR</div><div class="gt-def">Quarterly Business Review — where Ooredoo's strategy teams review performance against plan. AI generates the analytical brief; humans make the strategic judgements.</div></div>
+  </div></div>
+</div>
+</div>
+ 
  
 <!-- ══ TOP MGMT — WHO ══ -->
 <div class="slide has-nav" data-id="top-who">
@@ -748,8 +935,8 @@ const total=slides.length;
 let cur=0;
 const idxMap={};
 slides.forEach((s,i)=>{if(s.dataset.id)idxMap[s.dataset.id]=i});
-const navIds=['b2b','b2c','tech','corp','top-who','top-journey','senior-who','senior-journey','middle-who','middle-journey','junior-who','junior-journey'];
-const tabMap={'top-who':'top','top-journey':'top','senior-who':'senior','senior-journey':'senior','middle-who':'middle','middle-journey':'middle','junior-who':'junior','junior-journey':'junior','b2b':'b2b','b2c':'b2c','tech':'tech','corp':'corp'};
+const navIds=['b2b','b2c','tech','corp-hr','corp-finance','corp-legal','corp-supply','corp-admin','corp-strategy','top-who','top-journey','senior-who','senior-journey','middle-who','middle-journey','junior-who','junior-journey'];
+const tabMap={'top-who':'top','top-journey':'top','senior-who':'senior','senior-journey':'senior','middle-who':'middle','middle-journey':'middle','junior-who':'junior','junior-journey':'junior','b2b':'b2b','b2c':'b2c','tech':'tech','corp-hr':'corp','corp-finance':'corp','corp-legal':'corp','corp-supply':'corp','corp-admin':'corp','corp-strategy':'corp'};
 function updateUI(){
   document.getElementById('prog').style.width=((cur+1)/total*100)+'%';
   document.getElementById('ctr').textContent=(cur+1)+' / '+total;
@@ -761,6 +948,18 @@ function updateUI(){
     const tabClass=tabMap[id]||id;
     const m=document.querySelector('.ttab.'+tabClass);
     if(m)m.classList.add('active');
+    const corpIds=['corp-hr','corp-finance','corp-legal','corp-supply','corp-admin','corp-strategy'];
+    const subNav=document.getElementById('corpSubNav');
+    if(subNav){
+      if(corpIds.includes(id)){
+        subNav.classList.add('show');
+        document.querySelectorAll('.ttab.corp-sub').forEach(t=>t.classList.remove('active'));
+        const sub=document.querySelector('.ttab.corp-sub[onclick="jumpTo(\'' + id + '\')"]');
+        if(sub)sub.classList.add('active');
+      } else {
+        subNav.classList.remove('show');
+      }
+    }
   }
 }
 function goTo(n){

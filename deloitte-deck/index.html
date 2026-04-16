@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ooredoo AI Fluency — Proposed Approach</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Open Sans',Arial,sans-serif;background:#ccc;display:flex;flex-direction:column;align-items:center;padding:20px 0;gap:16px}
+/* SLIDE */
+.slide{width:1280px;min-height:720px;background:#fff;position:relative;padding:28px 36px 56px;box-shadow:0 4px 24px rgba(0,0,0,0.18);border-radius:4px;overflow:hidden}
+/* BACKGROUND PATTERN */
+.slide::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(circle,rgba(200,230,160,0.08) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+/* TITLE */
+.slide-title{font-size:28px;font-weight:800;color:#111;margin-bottom:3px;line-height:1.2}
+.slide-title span{font-weight:400;color:#333}
+.slide-subtitle{font-size:14px;color:#666;font-weight:400;margin-bottom:16px}
+/* SECTION LABEL */
+.section-label{text-align:center;font-size:14.5px;font-weight:700;color:#3d7c0a;margin-bottom:8px;letter-spacing:0.01em}
+.section-label.uc{color:#3d7c0a}
+/* ROLE TABLE */
+.role-table{width:100%;border-collapse:collapse;margin-bottom:14px;border:1.5px solid #3d7c0a}
+.role-table th{background:#2d6a14;color:#fff;font-size:13.5px;font-weight:700;padding:10px 14px;text-align:center;border-right:1.5px solid rgba(255,255,255,0.3)}
+.role-table th:last-child{border-right:none}
+.role-table td{vertical-align:top;padding:10px 14px;font-size:12.5px;color:#222;line-height:1.6;border-right:1.5px solid #c8e0a0;border-top:1.5px solid #3d7c0a}
+.role-table td:last-child{border-right:none}
+.role-table td ul{list-style:disc;padding-left:16px}
+.role-table td ul li{margin-bottom:3px;color:#222}
+/* UC SECTION */
+.uc-banner{background:#3d7c0a;height:4px;margin-bottom:6px;border-radius:2px}
+.uc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:1.5px solid #8abe4a;border-radius:4px;overflow:hidden}
+.uc-col{display:flex;flex-direction:column}
+.uc-card{padding:14px 16px;text-align:center;flex:1;border-bottom:1px solid #c8e0a0;border-right:1px solid #c8e0a0;min-height:100px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.uc-col:last-child .uc-card{border-right:none}
+.uc-col .uc-card:last-child{border-bottom:none}
+.uc-card h4{font-family:'Merriweather',Georgia,serif;font-size:13px;font-weight:700;color:#111;margin-bottom:6px;line-height:1.35}
+.uc-card p{font-size:11.5px;color:#444;line-height:1.55}
+/* FOOTER */
+.slide-footer{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:0 36px;height:38px;border-top:1px solid #e0e0e0;background:#fff}
+.footer-left{font-size:10px;color:#888}
+.footer-right{font-size:10px;color:#888}
+.footer-right span{font-weight:600}
+/* ACCELER BAR */
+.acceler-bar{position:absolute;bottom:38px;left:0;right:0;background:#f0f7e6;border-top:1px solid #c8e0a0;border-bottom:1px solid #c8e0a0;height:28px;display:flex;align-items:center;justify-content:center;gap:6px}
+.acceler-bar .acc-logo{font-size:13px;font-weight:700;color:#3d7c0a;font-style:italic;letter-spacing:-0.02em}
+.acceler-bar span{font-size:12px;color:#555}
+/* PAGE NAV */
+.nav-bar{position:fixed;top:0;left:0;right:0;background:rgba(45,106,20,0.97);z-index:1000;display:flex;align-items:center;padding:0 16px;height:42px;gap:4px;overflow-x:auto}
+.nav-bar::-webkit-scrollbar{display:none}
+.nav-logo{font-size:12px;font-weight:700;color:rgba(255,255,255,.8);padding-right:14px;border-right:1px solid rgba(255,255,255,.2);margin-right:6px;white-space:nowrap;flex-shrink:0}
+.ntab{padding:4px 12px;font-size:11px;font-weight:600;color:rgba(255,255,255,.55);cursor:pointer;border-radius:4px;border:1px solid transparent;white-space:nowrap;flex-shrink:0;transition:all .15s;text-decoration:none}
+.ntab:hover{color:#fff;background:rgba(255,255,255,.12)}
+.ntab.active{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.35);color:#fff}
+body{padding-top:58px}
+/* SLIDE VISIBILITY */
+.slide{display:none}
+.slide.active{display:block}
+</style>
+</head>
+<body>
+ 
+<div class="nav-bar" id="navBar">
+  <span class="nav-logo">Ooredoo AI Fluency</span>
+  <a class="ntab active" onclick="show('b2b')">B2B</a>
+  <a class="ntab" onclick="show('b2c')">B2C</a>
+  <a class="ntab" onclick="show('tech')">Technology &amp; Networks</a>
+  <a class="ntab" onclick="show('corp')">Corporate Functions</a>
+  <a class="ntab" onclick="show('top')">Top Management</a>
+  <a class="ntab" onclick="show('senior')">Senior Management</a>
+  <a class="ntab" onclick="show('middle')">Middle Management</a>
+  <a class="ntab" onclick="show('junior')">Junior Management</a>
+</div>
+ 
+<!-- ══════════ B2B ══════════ -->
+<div class="slide active" id="slide-b2b">
+  <div class="slide-title"><b>Our Proposed Approach</b> <span>| AI Fluency for B2B Employees</span></div>
+  <div class="slide-subtitle">Sample use cases</div>
+  <div class="section-label">Our Understanding of B2B Target Audience Job Roles</div>
+  <table class="role-table">
+    <tr>
+      <th>B2B Sales / Account Management</th>
+      <th>Solution Consultants</th>
+      <th>Product &amp; Commercial Teams</th>
+    </tr>
+    <tr>
+      <td><ul>
+        <li>ACV pipeline / Pipeline velocity / Forecast</li>
+        <li>New Sales / Renew / Upsell / Win-back</li>
+        <li>Respond to RFPs</li>
+        <li>Maintain CRM hygiene</li>
+        <li>Must lead AI conversations with CIOs &amp; CFOs</li>
+      </ul></td>
+      <td><ul>
+        <li>PoC Design / Architecture / Technical Discovery</li>
+        <li>RFP Response / Proposal Writing / ROI Models</li>
+        <li>Translate Technical &rarr; Executive (CFO / CIO / CISO)</li>
+        <li>Vertical Use Cases: O&amp;G, Smart City, Government</li>
+        <li>Own technical credibility in CIO/CISO conversations</li>
+      </ul></td>
+      <td><ul>
+        <li>Own P&amp;L for AI / Cloud / IoT bundles</li>
+        <li>GTM Execution / Pricing / Competitive Positioning</li>
+        <li>Manage hyperscaler partnerships (Azure, NVIDIA)</li>
+        <li>Build business cases for new AI/digital revenue</li>
+        <li>Translate product advantage into buyer language</li>
+      </ul></td>
+    </tr>
+  </table>
+  <div class="section-label uc">Sample Use Cases — To be used for Hands-On sessions Across Prompt Engineering to Agent Building</div>
+  <div class="uc-banner"></div>
+  <div class="uc-grid">
+    <div class="uc-col">
+      <div class="uc-card"><h4>AI Meeting Prep Pack</h4><p>Enter client name. Get all talking points. Follow-up questions. Competitor Battle card.</p></div>
+      <div class="uc-card"><h4>C-Suite Pitch Generator</h4><p>Input account name + Persona (CIO / CFO / CISO). 5-minute custom pitch. Objection handling.</p></div>
+      <div class="uc-card"><h4>B2B Product Knowledge Assistant</h4><p>RAG agent with Ooredoo info pre-loaded. Sales executive asks. Gets full response — product, pricing, case studies, compliance checks.</p></div>
+    </div>
+    <div class="uc-col">
+      <div class="uc-card"><h4>Q-CERT / CRA Compliance Checker</h4><p>Paste a draft proposal. Flags any missing compliance statements for Qatar regulatory requirements.</p></div>
+      <div class="uc-card"><h4>RFP Response Generator</h4><p>Paste RFP requirements. Match Ooredoo capabilities. Draft response with all relevant content.</p></div>
+      <div class="uc-card"><h4>Sovereign AI Cloud Proposal Engine</h4><p>Takes discovery session notes &rarr; generates full proposal. Architecture options. Executive summary in 3 personas. ROI model. Q-CERT and PDPL compliance checklist.</p></div>
+    </div>
+    <div class="uc-col">
+      <div class="uc-card"><h4>Partner Performance Summariser</h4><p>Paste quarterly partner data. Summary of performance vs target, gaps. Actions for next review.</p></div>
+      <div class="uc-card"><h4>Hyperscaler Differentiation Assistant</h4><p>Ooredoo's Sovereign AI Cloud vs competition. Any field question. Response in seconds.</p></div>
+      <div class="uc-card"><h4>Live Competitive Intelligence Monitor</h4><p>Tracks public signals from AWS, Azure, STC — product launches, pricing changes, government contract wins, LinkedIn activity. Alerts commercial team.</p></div>
+    </div>
+  </div>
+  <div class="acceler-bar"><span class="acc-logo">acceler</span><span>Sample Solution — To be customized basis Ooredoo inputs</span></div>
+  <div class="slide-footer"><span class="footer-left">© 2026 Deloitte &amp; Touche Middle East Limited. All rights reserved</span><span class="footer-right"><span>Ooredoo</span> | AI Fluency Program</span></div>
+</div>
+ 
+<!-- ══════════ B2C ══════════ -->
+<div class="slide" id="slide-b2c">
+  <div class="slide-title"><b>Our Proposed Approach</b> <span>| AI Fluency for B2C Employees</span></div>
+  <div class="slide-subtitle">Sample use cases</div>
+  <div class="section-label">Our Understanding of B2C Target Audience Job Roles</div>
+  <table class="role-table">
+    <tr>
+      <th>B2C Marketing</th>
+      <th>Customer Experience</th>
+      <th>Retail, Digital Channels &amp; Service</th>
+    </tr>
+    <tr>
+      <td><ul>
+        <li>Campaign execution across SMS, email, social, push</li>
+        <li>Segment targeting / A/B testing / Copy generation</li>
+        <li>Personalisation at scale for prepaid / postpaid segments</li>
+        <li>Ramadan, seasonal, and retention campaign planning</li>
+        <li>PDPL-compliant targeting and content approval</li>
+      </ul></td>
+      <td><ul>
+        <li>NPS tracking / Complaint resolution / Sentiment analysis</li>
+        <li>Churn prediction and retention intervention design</li>
+        <li>Chatbot performance monitoring and optimisation</li>
+        <li>Contact centre quality assurance and coaching</li>
+        <li>Weekly CX review reporting and action prioritisation</li>
+      </ul></td>
+      <td><ul>
+        <li>In-store and digital self-service journey management</li>
+        <li>Personalised product recommendations at point of sale</li>
+        <li>Proactive service alerts — targeted, not broadcast</li>
+        <li>Call handling: billing, SIM activation, plan changes</li>
+        <li>Digital top-up and self-service adoption improvement</li>
+      </ul></td>
+    </tr>
+  </table>
+  <div class="section-label uc">Sample Use Cases — To be used for Hands-On sessions Across Prompt Engineering to Agent Building</div>
+  <div class="uc-banner"></div>
+  <div class="uc-grid">
+    <div class="uc-col">
+      <div class="uc-card"><h4>Campaign Content Generator</h4><p>One brief &rarr; SMS, email, Instagram, and push variants for 3 audience segments. A/B test plan included.</p></div>
+      <div class="uc-card"><h4>Audience Segmentation Assistant</h4><p>Usage + purchase history &rarr; behavioural customer segments with AI-generated labels and targeting rationale.</p></div>
+      <div class="uc-card"><h4>Ramadan Campaign Personaliser</h4><p>Historical usage data &rarr; personalised Ramadan offers per segment. Data-heavy, family plan, and voice-primary customers each get distinct messaging.</p></div>
+    </div>
+    <div class="uc-col">
+      <div class="uc-card"><h4>NPS Verbatim Analyser</h4><p>Paste survey responses. Get theme clusters, sentiment scores per theme, and top 3 urgent action priorities.</p></div>
+      <div class="uc-card"><h4>Churn Risk Classifier</h4><p>20 customer profiles in &rarr; Low / Medium / High churn risk tier + recommended retention intervention per high-risk customer.</p></div>
+      <div class="uc-card"><h4>CX Weekly Brief Generator</h4><p>Raw NPS data + call centre notes &rarr; 1-page CX review brief ready for the weekly leadership meeting.</p></div>
+    </div>
+    <div class="uc-col">
+      <div class="uc-card"><h4>Chatbot Flow Designer</h4><p>Service scenario input &rarr; full chatbot decision tree with escalation triggers, handover scripts, and fallback responses.</p></div>
+      <div class="uc-card"><h4>Personalised Offer Builder</h4><p>Customer profile &rarr; product recommendation + retention offer matched to usage history. Replaces generic broadcast discounts.</p></div>
+      <div class="uc-card"><h4>Service Response Drafter</h4><p>Customer complaint description &rarr; empathetic, on-brand, resolution-focused AI-drafted response for agent review and send.</p></div>
+    </div>
+  </div>
+  <div class="acceler-bar"><span class="acc-logo">acceler</span><span>Sample Solution — To be customized basis Ooredoo inputs</span></div>
+  <div class="slide-footer"><span class="footer-left">© 2026 Deloitte &amp; Touche Middle East Limited. All rights reserved</span><span class="footer-right"><span>Ooredoo</span> | AI Fluency Program</span></div>
+</div>
+ 
+<!-- ══════════ TECH & NETWORKS ══════════ -->
+<div class="slide" id="slide-tech">
+  <div class="slide-title"><b>Our Proposed Approach</b> <span>| AI Fluency for Technology &amp; Networks</span></div>
+  <div class="slide-subtitle">Sample use cases</div>
+  <div class="section-label">Our Understanding of Technology &amp; Networks Target Audience Job Roles</div>
+  <table class="role-table">
+    <tr>
+      <th>Network Operations / NOC</th>
+      <th>IT Operations</th>
+      <th>Engineering, Capacity &amp; CIS</th>
+    </tr>
+    <tr>
+      <td><ul>
+        <li>24/7 network monitoring / Alarm triage / P1 escalation</li>
+        <li>Incident documentation / Post-mortem reporting</li>
+        <li>Shift handover quality and continuity</li>
+        <li>False-positive management and noise reduction</li>
+        <li>Network SLA compliance and uptime reporting</li>
+      </ul></td>
+      <td><ul>
+        <li>IT ticket classification / Service desk management</li>
+        <li>Configuration change documentation and approvals</li>
+        <li>AIOps tool evaluation and adoption</li>
+        <li>IT incident RCA and post-mortem writing</li>
+        <li>Cross-functional AI integration and collaboration</li>
+      </ul></td>
+      <td><ul>
+        <li>Capacity planning / Traffic forecasting / Site prioritisation</li>
+        <li>Predictive maintenance design and data requirements</li>
+        <li>AI security risk assessment and vendor evaluation</li>
+        <li>Anomaly investigation and root cause analysis</li>
+        <li>AI governance, explainability, and CRA / Q-CERT compliance</li>
+      </ul></td>
+    </tr>
+  </table>
+  <div class="section-label uc">Sample Use Cases — To be used for Hands-On sessions Across Prompt Engineering to Agent Building</div>
+  <div class="uc-banner"></div>
+  <div class="uc-grid">
+    <div class="uc-col">
+      <div class="uc-card"><h4>NOC Alarm Triage Agent</h4><p>Paste alarm log. Classifies each alarm. P1 issues flagged. False positives filtered. Engineer focuses on what matters.</p></div>
+      <div class="uc-card"><h4>Incident Post-Mortem Generator</h4><p>Bullet-point notes &rarr; structured RCA report with root cause, timeline, impacted systems, and recommended actions.</p></div>
+      <div class="uc-card"><h4>Shift Handover Summariser</h4><p>Shift notes &rarr; clean structured handover report. Incoming team knows exactly what is open, in-progress, and resolved.</p></div>
+    </div>
+    <div class="uc-col">
+      <div class="uc-card"><h4>IT Ticket Classifier</h4><p>20 tickets in &rarr; P1–P4 priority + affected system + first recommended action. Service desk triage time cut by 50%.</p></div>
+      <div class="uc-card"><h4>AIOps Value Case Builder</h4><p>Input current manual ops metrics. Output: structured ROI model for AIOps investment — ready for leadership approval.</p></div>
+      <div class="uc-card"><h4>Configuration Change Drafter</h4><p>Change request notes &rarr; formal configuration change document with risk assessment, rollback plan, and approval checklist.</p></div>
+    </div>
+    <div class="uc-col">
+      <div class="uc-card"><h4>Predictive Maintenance Designer</h4><p>Network asset + failure history &rarr; full use case canvas with data requirements, model type, KPIs, and time-to-value estimate.</p></div>
+      <div class="uc-card"><h4>Capacity Forecast Generator</h4><p>Historical traffic data &rarr; 90-day demand forecast for a network area with anomaly flags and site prioritisation recommendations.</p></div>
+      <div class="uc-card"><h4>AI Security Risk Mapper</h4><p>AI tool or deployment scenario &rarr; risk register with adversarial attack vectors, data poisoning risks, and mitigations per risk.</p></div>
+    </div>
+  </div>
+  <div class="acceler-bar"><span class="acc-logo">acceler</span><span>Sample Solution — To be customized basis Ooredoo inputs</span></div>
+  <div class="slide-footer"><span class="footer-left">© 2026 Deloitte &amp; Touche Middle East Limited. All rights reserved</span><span class="footer-right"><span>Ooredoo</span> | AI Fluency Program</span></div>
+</div>
+ 
+<!-- ══════════ CORPORATE FUNCTIONS ══════════ -->
+<div class="slide" id="slide-corp">
+  <div class="slide-title"><b>Our Proposed Approach</b> <span>| AI Fluency for Corporate Functions</span></div>
+  <div class="slide-subtitle">Sample use cases</div>
+  <div class="section-label">Our Understanding of Corporate Functions Target Audience Job Roles</div>
+  <table class="role-table">
+    <tr>
+      <th>HR &amp; L&amp;D</th>
+      <th>Finance &amp; Revenue Assurance</th>
+      <th>Legal, Supply Chain &amp; Strategy</th>
+    </tr>
+    <tr>
+      <td><ul>
+        <li>Talent acquisition / JD creation / Candidate screening</li>
+        <li>Onboarding design / Learning personalisation</li>
+        <li>Workforce planning / Engagement surveys / Retention</li>
+        <li>Skill mapping and capability gap analysis</li>
+        <li>PDPL compliance for all employee data processing</li>
+      </ul></td>
+      <td><ul>
+        <li>Budgeting / Forecasting / Variance analysis / Reporting</li>
+        <li>Revenue assurance / Leakage detection / Fraud signals</li>
+        <li>Board narrative preparation and FP&amp;A reporting</li>
+        <li>Anomaly detection across prepaid, data, and VAS lines</li>
+        <li>AI audit trails and accuracy verification requirements</li>
+      </ul></td>
+      <td><ul>
+        <li>Contract review / Clause extraction / Non-standard terms</li>
+        <li>CRA and PDPL regulatory change monitoring</li>
+        <li>Supplier risk monitoring / Demand forecasting / Procurement</li>
+        <li>Competitive intelligence / Market analysis / Strategic foresight</li>
+        <li>SOP generation / Workflow automation / Meeting-to-action</li>
+      </ul></td>
+    </tr>
+  </table>
+  <div class="section-label uc">Sample Use Cases — To be used for Hands-On sessions Across Prompt Engineering to Agent Building</div>
+  <div class="uc-banner"></div>
+  <div class="uc-grid">
+    <div class="uc-col">
+      <div class="uc-card"><h4>Job Description Generator</h4><p>Role brief &rarr; full JD with competencies, responsibilities, and PDPL-compliant data handling requirements.</p></div>
+      <div class="uc-card"><h4>Interview Question Builder</h4><p>JD + competency framework &rarr; structured interview question set per seniority level with suggested scoring criteria.</p></div>
+      <div class="uc-card"><h4>Engagement Survey Analyser</h4><p>Survey responses &rarr; theme clusters, sentiment scores, retention risk flags, and L&D priority areas for leadership action.</p></div>
+    </div>
+    <div class="uc-col">
+      <div class="uc-card"><h4>Variance Commentary Generator</h4><p>Budget vs actual data &rarr; board-ready variance commentary by line item. Draft in minutes, not half a day.</p></div>
+      <div class="uc-card"><h4>Revenue Leakage Detector</h4><p>Billing and usage data &rarr; anomaly flags with estimated QAR leakage per item and recommended investigation actions.</p></div>
+      <div class="uc-card"><h4>Board Narrative Drafter</h4><p>Raw financials + trend notes &rarr; plain-language board report section with trend commentary and forward-looking statements.</p></div>
+    </div>
+    <div class="uc-col">
+      <div class="uc-card"><h4>Contract Clause Extractor</h4><p>Paste contract &rarr; key clauses extracted, non-standard terms flagged, structured summary ready for legal review.</p></div>
+      <div class="uc-card"><h4>Supplier Risk Monitor</h4><p>Supplier portfolio input &rarr; weekly health summary with risk signals, SLA breach indicators, and recommended actions.</p></div>
+      <div class="uc-card"><h4>SOP &amp; Workflow Builder</h4><p>Process description or meeting notes &rarr; structured SOP with step-by-step actions, decision points, and responsibility matrix.</p></div>
+    </div>
+  </div>
+  <div class="acceler-bar"><span class="acc-logo">acceler</span><span>Sample Solution — To be customized basis Ooredoo inputs</span></div>
+  <div class="slide-footer"><span class="footer-left">© 2026 Deloitte &amp; Touche Middle East Limited. All rights reserved</span><span class="footer-right"><span>Ooredoo</span> | AI Fluency Program</span></div>
+</div>
+ 
+<!-- ══════════ TOP MANAGEMENT ══════════ -->
+<div class="slide" id="slide-top">
+  <div class="slide-title"><b>Our Proposed Approach</b> <span>| AI Fluency for Top Management (C-Suite)</span></div>
+  <div class="slide-subtitle">Sample use cases</div>
+  <div class="section-label">Our Understanding of Top Management Target Audience Job Roles</div>
+  <table class="role-table">
+    <tr>
+      <th>CEO / Group CEO</th>
+      <th>CFO</th>
+      <th>CTO / CIO</th>
+    </tr>
+    <tr>
+      <td><ul>
+        <li>AI as a national and commercial strategic lever</li>
+        <li>AI investment narrative for board and investors</li>
+        <li>Competitive AI positioning vs STC, e&amp;, Vodafone Qatar</li>
+        <li>AI governance, ethics, and regulatory policy decisions</li>
+        <li>Digital transformation direction and partner strategy</li>
+      </ul></td>
+      <td><ul>
+        <li>AI ROI models and investment approval frameworks</li>
+        <li>Revenue assurance and fraud detection strategy</li>
+        <li>Cost optimisation and AI-driven efficiency targets</li>
+        <li>AI risk in financial modelling and audit trail requirements</li>
+        <li>AI spend governance and annual planning integration</li>
+      </ul></td>
+      <td><ul>
+        <li>AI infrastructure strategy: Sovereign AI Cloud, 5G, fiber</li>
+        <li>Build vs buy vs partner — AI technology decisions</li>
+        <li>AI readiness assessment: data, talent, infrastructure</li>
+        <li>18-month AI technology roadmap and prioritisation</li>
+        <li>AI vendor evaluation and hyperscaler partnership governance</li>
+      </ul></td>
+    </tr>
+  </table>
+  <div class="section-label uc">Sample Use Cases — To be used for Hands-On sessions Across Prompt Engineering to Agent Building</div>
+  <div class="uc-banner"></div>
+  <div class="uc-grid">
+    <div class="uc-col">
+      <div class="uc-card"><h4>AI Strategy Narrative Builder</h4><p>Competitor moves + Ooredoo capabilities &rarr; board-ready 3-year AI investment narrative. In the CEO's own voice.</p></div>
+      <div class="uc-card"><h4>Board AI Briefing Generator</h4><p>AI maturity assessment input &rarr; structured board-ready AI position paper with competitive benchmarking vs GCC telcos.</p></div>
+      <div class="uc-card"><h4>Competitive AI Intelligence Brief</h4><p>Competitor name &rarr; their public AI claims, capability gaps, Ooredoo's differentiated response, and 2 deal-tilting questions.</p></div>
+    </div>
+    <div class="uc-col">
+      <div class="uc-card"><h4>AI ROI Calculator</h4><p>Team size + task hours saved + average cost &rarr; quantified ROI model for any AI investment. Approved in the same format as capex.</p></div>
+      <div class="uc-card"><h4>Revenue Uplift Modeller</h4><p>AI use case + Ooredoo customer base &rarr; estimated ARPU uplift and annual revenue impact with conservative and optimistic scenarios.</p></div>
+      <div class="uc-card"><h4>AI Cost Governance Dashboard</h4><p>Current AI tools and spend list &rarr; risk-scored cost governance summary with duplication flags and consolidation recommendations.</p></div>
+    </div>
+    <div class="uc-col">
+      <div class="uc-card"><h4>AI Readiness Assessment Tool</h4><p>Current data, team, and infrastructure inputs &rarr; 5-dimension AI maturity score with specific gaps and priority actions per dimension.</p></div>
+      <div class="uc-card"><h4>Build vs Buy vs Partner Evaluator</h4><p>AI use case + constraints &rarr; recommendation with rationale, risk factors, and cost-benefit comparison for each option.</p></div>
+      <div class="uc-card"><h4>18-Month AI Roadmap Generator</h4><p>Readiness score + strategic priorities &rarr; prioritised technology investment plan with milestones, dependencies, and governance checkpoints.</p></div>
+    </div>
+  </div>
+  <div class="acceler-bar"><span class="acc-logo">acceler</span><span>Sample Solution — To be customized basis Ooredoo inputs</span></div>
+  <div class="slide-footer"><span class="footer-left">© 2026 Deloitte &amp; Touche Middle East Limited. All rights reserved</span><span class="footer-right"><span>Ooredoo</span> | AI Fluency Program</span></div>
+</div>
+ 
+<!-- ══════════ SENIOR MANAGEMENT ══════════ -->
+<div class="slide" id="slide-senior">
+  <div class="slide-title"><b>Our Proposed Approach</b> <span>| AI Fluency for Senior Management (Function Leaders)</span></div>
+  <div class="slide-subtitle">Sample use cases</div>
+  <div class="section-label">Our Understanding of Senior Management Target Audience Job Roles</div>
+  <table class="role-table">
+    <tr>
+      <th>Commercial &amp; CX Directors</th>
+      <th>Technology Director</th>
+      <th>Corporate Functions Directors</th>
+    </tr>
+    <tr>
+      <td><ul>
+        <li>Identify high-impact AI use cases within their function</li>
+        <li>Improve KPIs: churn, ARPU, NPS, service quality</li>
+        <li>Interpret AI outputs: dashboards, churn scores, insights</li>
+        <li>Lead AI adoption and manage team change resistance</li>
+        <li>Sponsor AI pilots and present business cases to leadership</li>
+      </ul></td>
+      <td><ul>
+        <li>Build AIOps business case and secure leadership approval</li>
+        <li>Evaluate AI tooling vendors with a structured framework</li>
+        <li>Produce a 6-month technology AI adoption roadmap</li>
+        <li>Govern AI in network-critical and security-sensitive environments</li>
+        <li>Align technical AI investments with commercial priorities</li>
+      </ul></td>
+      <td><ul>
+        <li>Map team's top tasks to AI augmentation potential (heat map)</li>
+        <li>Build function-specific use case canvas for highest-value opportunity</li>
+        <li>Govern AI responsibly: PDPL, data risk, AI audit requirements</li>
+        <li>Reduce reporting and analysis cycle time across the function</li>
+        <li>Produce and present 90-day AI adoption roadmap to leadership</li>
+      </ul></td>
+    </tr>
+  </table>
+  <div class="section-label uc">Sample Use Cases — To be used for Hands-On sessions Across Prompt Engineering to Agent Building</div>
+  <div class="uc-banner"></div>
+  <div class="uc-grid">
+    <div class="uc-col">
+      <div class="uc-card"><h4>Function AI Heat Map Builder</h4><p>Team task list &rarr; AI augmentation potential scored by impact, feasibility, and data readiness. Top 3 priorities identified.</p></div>
+      <div class="uc-card"><h4>90-Day AI Adoption Roadmap</h4><p>Heat map output &rarr; milestone plan with owners, success criteria, and governance checkpoints for function-level AI rollout.</p></div>
+      <div class="uc-card"><h4>CX Intelligence Dashboard Generator</h4><p>NPS + call centre + digital channel data &rarr; weekly CX leadership brief with top 3 action priorities and trend commentary.</p></div>
+    </div>
+    <div class="uc-col">
+      <div class="uc-card"><h4>AIOps Business Case Builder</h4><p>Current manual ops time + team cost &rarr; structured ROI model for AIOps investment ready for CTO and CFO approval.</p></div>
+      <div class="uc-card"><h4>AI Vendor Evaluation Scorecard</h4><p>Two vendor proposals &rarr; 5-criteria comparison matrix (security, integration, reliability, compliance, lock-in) with recommendation.</p></div>
+      <div class="uc-card"><h4>Team AI Capability Mapper</h4><p>Team skills + current tools &rarr; AI readiness gaps and recommended training priorities per team member.</p></div>
+    </div>
+    <div class="uc-col">
+      <div class="uc-card"><h4>Function Use Case Canvas</h4><p>Highest-value function task &rarr; scoped AI use case with problem statement, AI approach, data requirements, and governance notes.</p></div>
+      <div class="uc-card"><h4>AI Pilot Brief Generator</h4><p>Selected use case &rarr; pilot structure: scope, timeline, success criteria, escalation path, and PDPL compliance requirements.</p></div>
+      <div class="uc-card"><h4>AI Risk Register Builder</h4><p>Function AI use cases &rarr; risk register with likelihood-impact scoring, mitigations, and regulatory compliance checkpoints.</p></div>
+    </div>
+  </div>
+  <div class="acceler-bar"><span class="acc-logo">acceler</span><span>Sample Solution — To be customized basis Ooredoo inputs</span></div>
+  <div class="slide-footer"><span class="footer-left">© 2026 Deloitte &amp; Touche Middle East Limited. All rights reserved</span><span class="footer-right"><span>Ooredoo</span> | AI Fluency Program</span></div>
+</div>
+ 
+<!-- ══════════ MIDDLE MANAGEMENT ══════════ -->
+<div class="slide" id="slide-middle">
+  <div class="slide-title"><b>Our Proposed Approach</b> <span>| AI Fluency for Middle Management (Team Leads)</span></div>
+  <div class="slide-subtitle">Sample use cases</div>
+  <div class="section-label">Our Understanding of Middle Management Target Audience Job Roles</div>
+  <table class="role-table">
+    <tr>
+      <th>Operations Team Leads</th>
+      <th>Marketing &amp; Commercial Leads</th>
+      <th>Technical &amp; Planning Leads</th>
+    </tr>
+    <tr>
+      <td><ul>
+        <li>Call centre performance: AHT, CSAT, first call resolution</li>
+        <li>Agent coaching, QA scoring, and productivity tracking</li>
+        <li>Weekly reporting and stakeholder communication</li>
+        <li>AI tool adoption for the team without adding workflow complexity</li>
+        <li>Managing 5–30 agents across inbound and outbound operations</li>
+      </ul></td>
+      <td><ul>
+        <li>Campaign execution: SMS, email, push, social (8–12 per quarter)</li>
+        <li>Copy generation / A/B testing / Content calendar management</li>
+        <li>Retail cluster performance tracking and upsell optimisation</li>
+        <li>AI for demand forecasting and staffing optimisation</li>
+        <li>Using AI insights for store performance and sales decisions</li>
+      </ul></td>
+      <td><ul>
+        <li>Capacity planning / 90-day traffic forecasting</li>
+        <li>5G site prioritisation and network rollout tracking</li>
+        <li>IT product management: feature ideation, testing, automation</li>
+        <li>Data analysis and performance reporting for engineering teams</li>
+        <li>Meeting-to-action workflow management and documentation</li>
+      </ul></td>
+    </tr>
+  </table>
+  <div class="section-label uc">Sample Use Cases — To be used for Hands-On sessions Across Prompt Engineering to Agent Building</div>
+  <div class="uc-banner"></div>
+  <div class="uc-grid">
+    <div class="uc-col">
+      <div class="uc-card"><h4>Team Performance Report Generator</h4><p>Raw metrics + notes &rarr; structured weekly team performance report in 15 minutes instead of 2 hours.</p></div>
+      <div class="uc-card"><h4>Call Summarisation Assistant</h4><p>Call notes or transcript &rarr; structured call summary with issue, resolution, and action items. Agent time on after-call work cut by 60%.</p></div>
+      <div class="uc-card"><h4>QA Scorecard Reviewer</h4><p>Call notes &rarr; QA scoring with specific improvement recommendations per agent. Consistent quality, consistent coaching.</p></div>
+    </div>
+    <div class="uc-col">
+      <div class="uc-card"><h4>Campaign Copy Generator</h4><p>Brief + tone + audience segment &rarr; 5 copy variants per channel. Campaign ready to A/B test in the same session.</p></div>
+      <div class="uc-card"><h4>A/B Test Plan Builder</h4><p>Campaign idea &rarr; structured A/B test with variant logic, audience split, success metrics, and minimum detectable effect.</p></div>
+      <div class="uc-card"><h4>Content Calendar Builder</h4><p>Monthly theme &rarr; 4-week content plan across SMS, email, Instagram, and push. All channels, all segments, one session.</p></div>
+    </div>
+    <div class="uc-col">
+      <div class="uc-card"><h4>Meeting Notes to Action Plan</h4><p>Meeting notes &rarr; structured action items with owners, deadlines, and priority levels. Shared with team before they leave the room.</p></div>
+      <div class="uc-card"><h4>Stakeholder Update Generator</h4><p>Project status data &rarr; clear, concise stakeholder communication draft with progress, blockers, and next steps.</p></div>
+      <div class="uc-card"><h4>Data Analysis Narrative</h4><p>Data table or chart values &rarr; narrative insights with key findings, trend commentary, and recommended actions for leadership.</p></div>
+    </div>
+  </div>
+  <div class="acceler-bar"><span class="acc-logo">acceler</span><span>Sample Solution — To be customized basis Ooredoo inputs</span></div>
+  <div class="slide-footer"><span class="footer-left">© 2026 Deloitte &amp; Touche Middle East Limited. All rights reserved</span><span class="footer-right"><span>Ooredoo</span> | AI Fluency Program</span></div>
+</div>
+ 
+<!-- ══════════ JUNIOR MANAGEMENT ══════════ -->
+<div class="slide" id="slide-junior">
+  <div class="slide-title"><b>Our Proposed Approach</b> <span>| AI Fluency for Junior Management (AI Enablers — APR)</span></div>
+  <div class="slide-subtitle">Sample use cases</div>
+  <div class="section-label">Our Understanding of Junior Management Target Audience Job Roles</div>
+  <table class="role-table">
+    <tr>
+      <th>Customer Service &amp; Retail Executives</th>
+      <th>NOC, IT &amp; Network Engineers</th>
+      <th>Analysts, Finance &amp; Admin Executives</th>
+    </tr>
+    <tr>
+      <td><ul>
+        <li>Handle billing issues, complaints, plan queries (call centre)</li>
+        <li>Sell SIMs, devices, and broadband plans (retail)</li>
+        <li>Supervise 2–3 junior agents or frontline team members</li>
+        <li>Escalation management and daily reporting</li>
+        <li>Clear do's and don'ts for customer data and PDPL compliance</li>
+      </ul></td>
+      <td><ul>
+        <li>Monitor network alarms and escalate P1 incidents</li>
+        <li>Document incidents, post-mortems, and shift handovers</li>
+        <li>Supervise 2–3 junior engineers on shift</li>
+        <li>Install and maintain network infrastructure / AI-enabled diagnostics</li>
+        <li>Human-in-the-loop principle — agent recommends, engineer decides</li>
+      </ul></td>
+      <td><ul>
+        <li>Build weekly reports, dashboards, and performance summaries</li>
+        <li>Support procurement research and category analysis</li>
+        <li>Manage platform workflows and digital operations</li>
+        <li>Supervise 1–2 junior analysts or interns</li>
+        <li>Using GenAI for SQL queries, data narratives, and insight generation</li>
+      </ul></td>
+    </tr>
+  </table>
+  <div class="section-label uc">Sample Use Cases — To be used for Hands-On sessions Across Prompt Engineering to Agent Building</div>
+  <div class="uc-banner"></div>
+  <div class="uc-grid">
+    <div class="uc-col">
+      <div class="uc-card"><h4>Customer Query Response Drafter</h4><p>Customer issue description &rarr; empathetic, policy-compliant response draft. Agent reviews and sends. Handling time cut by 40%.</p></div>
+      <div class="uc-card"><h4>Escalation Summary Generator</h4><p>Interaction notes &rarr; structured escalation summary for senior handling. Context, issue, customer history, recommended action.</p></div>
+      <div class="uc-card"><h4>Product Recommendation Assistant</h4><p>Customer profile + usage history &rarr; relevant product or plan recommendation with sales rationale. Replaces generic script.</p></div>
+    </div>
+    <div class="uc-col">
+      <div class="uc-card"><h4>Alarm Classification Prompt</h4><p>Paste alarm details &rarr; classification + priority level + first recommended action. Engineer makes the final call.</p></div>
+      <div class="uc-card"><h4>Incident Note-to-Report Converter</h4><p>Bullet-point notes &rarr; formatted post-mortem report for shift handover. Written in 15 minutes, not 90.</p></div>
+      <div class="uc-card"><h4>Troubleshooting Guide Generator</h4><p>Fault type + symptoms &rarr; step-by-step diagnostic checklist with decision points and escalation triggers.</p></div>
+    </div>
+    <div class="uc-col">
+      <div class="uc-card"><h4>SQL Query Helper</h4><p>Plain-English question &rarr; SQL query + plain-language explanation of the logic. Monday morning reporting cut from 4 hours to 45 minutes.</p></div>
+      <div class="uc-card"><h4>Dashboard Insight Generator</h4><p>Data table or chart values &rarr; narrative summary with key findings, anomalies, and trend commentary ready to paste into a report.</p></div>
+      <div class="uc-card"><h4>Team Show &amp; Tell Planner (APR)</h4><p>Programme learnings &rarr; structured 30-minute Show &amp; Tell plan for the team. Demo script, colleague exercise, and 30-day APR commitment template.</p></div>
+    </div>
+  </div>
+  <div class="acceler-bar"><span class="acc-logo">acceler</span><span>Sample Solution — To be customized basis Ooredoo inputs</span></div>
+  <div class="slide-footer"><span class="footer-left">© 2026 Deloitte &amp; Touche Middle East Limited. All rights reserved</span><span class="footer-right"><span>Ooredoo</span> | AI Fluency Program</span></div>
+</div>
+ 
+<script>
+function show(id){
+  document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.ntab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('slide-'+id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
